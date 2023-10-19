@@ -1,5 +1,10 @@
 #include "datahandler.h"
 
+bool compareResistors(const Resistor res1, const Resistor res2)
+{
+    return (res1.getConsumption() < res2.getConsumption());
+}
+
 DataHandler *DataHandler::instance = nullptr;
 
 DataHandler::DataHandler(QObject *parent)
@@ -8,16 +13,80 @@ DataHandler::DataHandler(QObject *parent)
 
 }
 
-void DataHandler::setBallastResisterList(const QList<Resistor *> &newBallastResisterList)
+void DataHandler::setBallastResisterList(const QList<double> &newBallastResisterList)
 {
-    ballastResisterList = newBallastResisterList;
-    qDebug() << "DataHandler::setBallastResisterList" << newBallastResisterList.size();
+    for (auto item: newBallastResisterList)
+    {
+        ballastResisterList.append(new Resistor(item, percentage(item, ballastSum), false));
+    }
 }
 
-void DataHandler::setActiveResisterList(const QList<Resistor *> &newActiveResisterList)
+void DataHandler::setActiveResisterList(const QList<std::pair<double, bool>> &newActiveResisterList)
 {
-    activeResisterList = newActiveResisterList;
-    qDebug() << "DataHandler::setActiveResisterList" << newActiveResisterList.size();
+    for (auto item: newActiveResisterList)
+    {
+        activeResisterList.append(new Resistor(item.first, percentage(item.first, activeSum), item.second));
+    }
+}
+
+double DataHandler::percentage(double a, double b)
+{
+    return a/b*100.0;
+}
+
+void DataHandler::calculateActiveSum(const QList<std::pair<double, bool> > &activeResistorValueList)
+{
+    double temp = 0.0;
+    for(auto item: activeResistorValueList)
+    {
+        temp += item.first;
+    }
+    activeSum = temp;
+}
+
+void DataHandler::calculateBallastSum(const QList<double> &ballastResisterValueList)
+{
+    ballastSum = std::accumulate(ballastResisterValueList.begin(), ballastResisterValueList.end(), 0.0);
+}
+
+void DataHandler::clearActiveResistorList()
+{
+    activeResisterList.clear();
+}
+
+void DataHandler::clearBallastResistorList()
+{
+    ballastResisterList.clear();
+}
+
+void DataHandler::sortActiveResistorList()
+{
+    std::sort(activeResisterList.begin(), activeResisterList.end(), compareResistors);
+}
+
+void DataHandler::sortBallastResistorList()
+{
+    std::sort(ballastResisterList.begin(), ballastResisterList.end(), compareResistors);
+}
+
+void DataHandler::receiveBallastResisterList(const QList<double> &newBallastResisterList)
+{
+    clearBallastResistorList();
+    calculateBallastSum(newBallastResisterList);
+    qDebug() << "DataHandler: Кол-во резисторов балластной нагрузки:" << newBallastResisterList.size();
+    qDebug() << "DataHandler: Сумма балластных резисторов:" << ballastSum << "kOm";
+    setBallastResisterList(newBallastResisterList);
+    sortBallastResistorList();
+}
+
+void DataHandler::receiveActiveResisterList(const QList<std::pair<double, bool>> &newActiveResisterList)
+{
+    clearActiveResistorList();
+    calculateActiveSum(newActiveResisterList);
+    qDebug() << "DataHandler: Кол-во резисторов активной нагрузки:" << newActiveResisterList.size();
+    qDebug() << "DataHandler: Сумма активных резисторов:" << activeSum << "kOm";
+    setActiveResisterList(newActiveResisterList);
+    sortActiveResistorList();
 }
 
 const QList<Resistor *> &DataHandler::getBallastResisterList() const

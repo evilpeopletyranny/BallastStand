@@ -8,8 +8,8 @@ CalculationSettingScreen::CalculationSettingScreen(QWidget *parent) :
     ui->setupUi(this);
     dataHandler = DataHandler::getInstance();
 
-    connect(this, &CalculationSettingScreen::newActiveResistorsFound, dataHandler, &DataHandler::setActiveResisterList);
-    connect(this, &CalculationSettingScreen::newBallastResistorsFound, dataHandler, &DataHandler::setBallastResisterList);
+    connect(this, &CalculationSettingScreen::sendActiveResistorValueList, dataHandler, &DataHandler::receiveActiveResisterList);
+    connect(this, &CalculationSettingScreen::sendBallastResistorsValueList, dataHandler, &DataHandler::receiveBallastResisterList);
 }
 
 CalculationSettingScreen::~CalculationSettingScreen()
@@ -19,42 +19,40 @@ CalculationSettingScreen::~CalculationSettingScreen()
 
 void CalculationSettingScreen::on_activeAddButton_clicked()
 {
-    ui->activeVLayout->insertWidget(0, new ResistorInputFrame());
+    ui->activeVLayout->insertWidget(0, new ActiveResistorInputFrame());
 }
 
 
 void CalculationSettingScreen::on_ballastAddButton_clicked()
 {
-    ui->ballastVLayout->insertWidget(0, new ResistorInputFrame());
+    ui->ballastVLayout->insertWidget(0, new BallastResistorInputFrame());
 }
 
-void CalculationSettingScreen::on_acceptButton_clicked()
+void CalculationSettingScreen::rebuildResistors()
 {
-    newResistorsFound();
+
+    emit sendActiveResistorValueList(getActiveResistorValueList());
+    emit sendBallastResistorsValueList(getBallastResistorValueList());
 }
 
-void CalculationSettingScreen::newResistorsFound()
+QList<std::pair<double, bool>> CalculationSettingScreen::getActiveResistorValueList()
 {
-    emit newActiveResistorsFound(getActiveResistorList());
-    emit newBallastResistorsFound(getBallastResistorList());
-}
-
-QList<Resistor *> CalculationSettingScreen::getActiveResistorList()
-{
-    QList<Resistor *> list;
-    for(auto *item: ui->activeAreaContent->findChildren<ResistorInputFrame *>())
+    QList<std::pair<double, bool>> list;
+    for(auto *item: ui->activeAreaContent->findChildren<ActiveResistorInputFrame *>())
     {
-        list.append(item->getResistor());
+        list.append(
+                    {item->getConsumptionValue(), item->getStatus()}
+        );
     }
     return list;
 }
 
-QList<Resistor *> CalculationSettingScreen::getBallastResistorList()
+QList<double> CalculationSettingScreen::getBallastResistorValueList()
 {
-    QList<Resistor *> list;
-    for(auto *item: ui->ballastAreaContent->findChildren<ResistorInputFrame *>())
+    QList<double> list;
+    for(auto *item: ui->ballastAreaContent->findChildren<BallastResistorInputFrame *>())
     {
-        list.append(item->getResistor());
+        list.append(item->getConsumptionValue());
     }
     return list;
 }

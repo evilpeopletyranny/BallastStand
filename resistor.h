@@ -6,10 +6,11 @@ class Resistor
 {
 private:
     double consumption;
+    double percent;
     bool active;
 
 public:
-    explicit Resistor(double consumption, bool active = false);
+    explicit Resistor(double consumption, double percent, bool active = false);
     double getConsumption() const;
     void setConsumption(double newConsumption);
     bool getActive() const;

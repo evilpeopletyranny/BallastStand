@@ -35,8 +35,9 @@ void Resistor::deactivate()
     active = false;
 }
 
-Resistor::Resistor(double consumption, bool active)
+Resistor::Resistor(double consumption, double percent, bool active)
 {
     this->consumption = consumption;
+    this->percent = percent;
     this->active = active;
 }

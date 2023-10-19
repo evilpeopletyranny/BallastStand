@@ -11,9 +11,23 @@ class CalculationStackedWidget : public QWidget
 {
     Q_OBJECT
 
+private:
+    void goToSettingPage();
+    void goToViewPage();
+
+    void showChangeWidget();
+    void hideChangeWidget();
+
 public:
     explicit CalculationStackedWidget(QWidget *parent = nullptr);
     ~CalculationStackedWidget();
+
+private slots:
+    void on_acceptButton_clicked();
+
+    void on_changeButton_clicked();
+
+    void on_cancelButton_clicked();
 
 private:
     Ui::CalculationStackedWidget *ui;

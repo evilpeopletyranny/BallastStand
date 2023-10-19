@@ -4,7 +4,8 @@
 #include <QWidget>
 #include <QDebug>
 
-#include "resistorinputframe.h"
+#include "activeresistorinputframe.h"
+#include "ballastresistorinputframe.h"
 #include "datahandler.h"
 
 namespace Ui {
@@ -19,25 +20,24 @@ public:
     explicit CalculationSettingScreen(QWidget *parent = nullptr);
     ~CalculationSettingScreen();
 
+    void rebuildResistors();
+
 private slots:
     void on_activeAddButton_clicked();
 
     void on_ballastAddButton_clicked();
-
-    void on_acceptButton_clicked();
 
 private:
     Ui::CalculationSettingScreen *ui;
 
     DataHandler *dataHandler;
 
-    void newResistorsFound();
-    QList<Resistor *> getActiveResistorList();
-    QList<Resistor *> getBallastResistorList();
+    QList<std::pair<double, bool>> getActiveResistorValueList();
+    QList<double> getBallastResistorValueList();
 
 signals:
-    void newActiveResistorsFound(QList<Resistor *> list);
-    void newBallastResistorsFound(QList<Resistor *> list);
+    void sendActiveResistorValueList(QList<std::pair<double, bool>> list);
+    void sendBallastResistorsValueList(QList<double> list);
 };
 
 #endif // CALCULATIONSETTINGSCREEN_H

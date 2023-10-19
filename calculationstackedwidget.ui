@@ -17,7 +17,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <widget class="CalculationSettingScreen" name="settingPage"/>
-     <widget class="QWidget" name="viewPage"/>
+     <widget class="CalculationScreen" name="viewPage"/>
     </widget>
    </item>
    <item>
@@ -58,7 +58,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QPushButton" name="accaptButton">
+         <widget class="QPushButton" name="acceptButton">
           <property name="text">
            <string>Применить</string>
           </property>
@@ -96,6 +96,12 @@
    <class>CalculationSettingScreen</class>
    <extends>QWidget</extends>
    <header>calculationsettingscreen.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CalculationScreen</class>
+   <extends>QWidget</extends>
+   <header>calculationscreen.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
