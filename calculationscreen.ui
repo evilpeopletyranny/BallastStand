@@ -49,6 +49,7 @@
           <height>335</height>
          </rect>
         </property>
+        <layout class="QVBoxLayout" name="activeVLayout"/>
        </widget>
       </widget>
      </item>
@@ -160,6 +161,7 @@
           <height>335</height>
          </rect>
         </property>
+        <layout class="QVBoxLayout" name="ballastVLayout"/>
        </widget>
       </widget>
      </item>

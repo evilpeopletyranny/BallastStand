@@ -1,8 +1,8 @@
 #include "datahandler.h"
 
-bool compareResistors(const Resistor res1, const Resistor res2)
+bool compareResistors(const Resistor *res1, const Resistor *res2)
 {
-    return (res1.getConsumption() < res2.getConsumption());
+    return (res1->getConsumption() < res2->getConsumption());
 }
 
 DataHandler *DataHandler::instance = nullptr;
@@ -13,11 +13,26 @@ DataHandler::DataHandler(QObject *parent)
 
 }
 
+double DataHandler::getLoad() const
+{
+    return load;
+}
+
+double DataHandler::getBallastSum() const
+{
+    return ballastSum;
+}
+
+double DataHandler::getActiveSum() const
+{
+    return activeSum;
+}
+
 void DataHandler::setBallastResisterList(const QList<double> &newBallastResisterList)
 {
     for (auto item: newBallastResisterList)
     {
-        ballastResisterList.append(new Resistor(item, percentage(item, ballastSum), false));
+        ballastResisterList.append(new Resistor(item, percentage(item, activeSum), false));
     }
 }
 
@@ -69,6 +84,16 @@ void DataHandler::sortBallastResistorList()
     std::sort(ballastResisterList.begin(), ballastResisterList.end(), compareResistors);
 }
 
+void DataHandler::calculateLoad()
+{
+    load = 0.0;
+    for (auto *item: activeResisterList)
+    {
+        if (item->isActive()) load += item->getConsumption();
+    }
+    qDebug() << "DataHandler: включенная активная нагрузка =" << load << "kOm";
+}
+
 void DataHandler::receiveBallastResisterList(const QList<double> &newBallastResisterList)
 {
     clearBallastResistorList();
@@ -77,6 +102,8 @@ void DataHandler::receiveBallastResisterList(const QList<double> &newBallastResi
     qDebug() << "DataHandler: Сумма балластных резисторов:" << ballastSum << "kOm";
     setBallastResisterList(newBallastResisterList);
     sortBallastResistorList();
+
+    emit ballastResistorListProcessed();
 }
 
 void DataHandler::receiveActiveResisterList(const QList<std::pair<double, bool>> &newActiveResisterList)
@@ -87,6 +114,7 @@ void DataHandler::receiveActiveResisterList(const QList<std::pair<double, bool>>
     qDebug() << "DataHandler: Сумма активных резисторов:" << activeSum << "kOm";
     setActiveResisterList(newActiveResisterList);
     sortActiveResistorList();
+    calculateLoad();
 }
 
 const QList<Resistor *> &DataHandler::getBallastResisterList() const

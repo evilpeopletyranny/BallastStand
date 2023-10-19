@@ -3,6 +3,10 @@
 
 #include <QWidget>
 
+#include "resistorviewframe.h"
+#include "algorithmcore.h"
+#include "datahandler.h"
+
 namespace Ui {
 class CalculationScreen;
 }
@@ -17,6 +21,14 @@ public:
 
 private:
     Ui::CalculationScreen *ui;
+
+    DataHandler *dataHandler;
+    AlgorithmCore *algorithmCore;
+
+    void drawBallastResistor(int number, Resistor *resistor);
+
+private slots:
+    void redrawBallastResistorList();
 };
 
 #endif // CALCULATIONSCREEN_H

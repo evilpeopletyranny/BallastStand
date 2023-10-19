@@ -19,6 +19,7 @@ public:
 
     void activate();
     void deactivate();
+    double getPercent() const;
 };
 
 #endif // RESISTOR_H

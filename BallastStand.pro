@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     activeresistorinputframe.cpp \
+    algorithmcore.cpp \
     ballastresistorinputframe.cpp \
     calculationscreen.cpp \
     calculationsettingscreen.cpp \
@@ -18,10 +19,12 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     resistor.cpp \
-    resistorframe.cpp
+    resistorframe.cpp \
+    resistorviewframe.cpp
 
 HEADERS += \
     activeresistorinputframe.h \
+    algorithmcore.h \
     ballastresistorinputframe.h \
     calculationscreen.h \
     calculationsettingscreen.h \
@@ -29,7 +32,8 @@ HEADERS += \
     datahandler.h \
     mainwindow.h \
     resistor.h \
-    resistorframe.h
+    resistorframe.h \
+    resistorviewframe.h
 
 FORMS += \
     activeresistorinputframe.ui \
@@ -38,7 +42,8 @@ FORMS += \
     calculationsettingscreen.ui \
     calculationstackedwidget.ui \
     mainwindow.ui \
-    resistorframe.ui
+    resistorframe.ui \
+    resistorviewframe.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
