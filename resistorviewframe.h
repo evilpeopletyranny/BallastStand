@@ -2,6 +2,7 @@
 #define RESISTORVIEWFRAME_H
 
 #include <QFrame>
+#include <QLocale>
 
 #include "resistor.h"
 
@@ -19,6 +20,11 @@ public:
 
 private:
     Ui::ResistorViewFrame *ui;
+
+    void changeStatus(bool active);
+
+    void setActiveColor();
+    void setDeactiveColor();
 };
 
 #endif // RESISTORVIEWFRAME_H

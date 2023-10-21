@@ -2,6 +2,7 @@
 #define CALCULATIONSCREEN_H
 
 #include <QWidget>
+#include <QList>
 
 #include "resistorviewframe.h"
 #include "algorithmcore.h"
@@ -25,10 +26,25 @@ private:
     DataHandler *dataHandler;
     AlgorithmCore *algorithmCore;
 
+    QList<Resistor *> ballastResistorList;
+    QList<Resistor *> utilityResistorList;
+
+    void initExternalEntities();
+    void initConnections();
+
     void drawBallastResistor(int number, Resistor *resistor);
+    void drawUtilityResistor(int number, Resistor *resistor);
+
+    void redrawResistorLists();
+    void redrawBallastResistorList();
+    void redrawUtilityResistorList();
+
+    void refreshResistorLists();
+    void refreshBallastResistorList();
+    void refreshUtilityResistorList();
 
 private slots:
-    void redrawBallastResistorList();
+    void receiverAlgorithmCompleteSignal();
 };
 
 #endif // CALCULATIONSCREEN_H
