@@ -18,6 +18,7 @@ private:
 
     DataHandler *dataHandler;
 
+    void initExternalEntities();
     void initConnections();
 
     void greedyAlgorihtm(double load, QList<Resistor *> list);

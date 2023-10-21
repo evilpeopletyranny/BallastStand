@@ -15,7 +15,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,3,1">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
+    <layout class="QVBoxLayout" name="utilityLayout">
      <property name="rightMargin">
       <number>0</number>
      </property>
@@ -30,14 +30,14 @@
       </widget>
      </item>
      <item>
-      <widget class="QScrollArea" name="activeArea">
+      <widget class="QScrollArea" name="utilityArea">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOn</enum>
        </property>
        <property name="widgetResizable">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="activeAreaContent">
+       <widget class="QWidget" name="utilityAreaContent">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -46,7 +46,7 @@
           <height>77</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="activeVLayout">
+        <layout class="QVBoxLayout" name="utilityVLayout">
          <item>
           <spacer name="verticalSpacer_3">
            <property name="orientation">
@@ -65,7 +65,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="activeAddButton">
+      <widget class="QPushButton" name="utilityAddButton">
        <property name="text">
         <string>+</string>
        </property>

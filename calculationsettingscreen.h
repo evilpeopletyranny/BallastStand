@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QDebug>
 
-#include "activeresistorinputframe.h"
+#include "utilityresistorinputframe.h"
 #include "ballastresistorinputframe.h"
 #include "datahandler.h"
 
@@ -23,7 +23,7 @@ public:
     void rebuildResistors();
 
 private slots:
-    void on_activeAddButton_clicked();
+    void on_utilityAddButton_clicked();
 
     void on_ballastAddButton_clicked();
 
@@ -32,11 +32,11 @@ private:
 
     DataHandler *dataHandler;
 
-    QList<std::pair<double, bool>> getActiveResistorValueList();
+    QList<std::pair<double, bool>> getUtilityResistorValueList();
     QList<double> getBallastResistorValueList();
 
 signals:
-    void sendActiveResistorValueList(QList<std::pair<double, bool>> list);
+    void sendUtilityResistorValueList(QList<std::pair<double, bool>> list);
     void sendBallastResistorsValueList(QList<double> list);
 };
 

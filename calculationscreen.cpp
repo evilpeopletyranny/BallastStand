@@ -25,6 +25,7 @@ void CalculationScreen::initExternalEntities()
 void CalculationScreen::initConnections()
 {
     connect(algorithmCore, &AlgorithmCore::algorithComplete, this, &CalculationScreen::receiverAlgorithmCompleteSignal);
+    connect(dataHandler, &DataHandler::calculationsAfterAlgorithmProceed, this, &CalculationScreen::fillCentralWidget);
 }
 
 void CalculationScreen::receiverAlgorithmCompleteSignal()
@@ -46,16 +47,37 @@ void CalculationScreen::refreshBallastResistorList()
 
 void CalculationScreen::refreshUtilityResistorList()
 {
-    utilityResistorList = dataHandler->getActiveResisterList();
+    utilityResistorList = dataHandler->getUtilityResisterList();
+}
+
+void CalculationScreen::fillUtilityLoadFrame()
+{
+    ui->utilitySumLabel->setText(QString::number(dataHandler->getUtiltiySum(), 'f', 3));
+    ui->activeUtilitySumLabel->setText(QString::number(dataHandler->getActiveUtilitySum(), 'f', 3));
+    ui->activeUtilityPercentLabel->setText(QString::number(dataHandler->getActiveUtilityPercentSum(), 'f', 2));
+}
+
+void CalculationScreen::fillDiffLoadFrame()
+{
+    ui->diffLabel->setText(QString::number(dataHandler->getConsumptionDiff(), 'f', 3));
+    ui->percentDiffLabel->setText(QString::number(dataHandler->getPercentDiff(), 'f', 2));
+}
+
+void CalculationScreen::fillBallastLoadFrame()
+{
+    ui->ballastSumLabel->setText(QString::number(dataHandler->getBallastSum(), 'f', 3));
+    ui->activeBallastSumLabel->setText(QString::number(dataHandler->getActiveBallastSum(), 'f', 3));
+    ui->activeBallastPercentLabel->setText(QString::number(dataHandler->getActiveBallastPercentSum(), 'f', 2));
 }
 
 void CalculationScreen::redrawResistorLists()
 {
-    redrawBallastResistorList();
-    redrawUtilityResistorList();
+    clearAreas();
+    drawBallastResistorList();
+    drawUtilityResistorList();
 }
 
-void CalculationScreen::redrawBallastResistorList()
+void CalculationScreen::drawBallastResistorList()
 {
     QListIterator<Resistor *> iter(ballastResistorList);
     for(int i = 1; iter.hasNext(); i++) drawBallastResistor(i, iter.next());
@@ -66,7 +88,7 @@ void CalculationScreen::drawBallastResistor(int number, Resistor *resistor)
     ui->ballastVLayout->insertWidget(0, new ResistorViewFrame(number, resistor, this));
 }
 
-void CalculationScreen::redrawUtilityResistorList()
+void CalculationScreen::drawUtilityResistorList()
 {
     QListIterator<Resistor *> iter(utilityResistorList);
     for(int i = 1; iter.hasNext(); i++) drawUtilityResistor(i, iter.next());
@@ -76,3 +98,65 @@ void CalculationScreen::drawUtilityResistor(int number, Resistor *resistor)
 {
     ui->utilityVLayout->insertWidget(0, new ResistorViewFrame(number, resistor, this));
 }
+
+void CalculationScreen::clearAreas()
+{
+    clearBallastArea();
+    clearUtilityArea();
+}
+
+void CalculationScreen::clearBallastArea()
+{
+    for (auto *item: ui->ballastAreaContent->findChildren<ResistorViewFrame *>()) delete item;
+}
+
+void CalculationScreen::clearUtilityArea()
+{
+    for (auto *item: ui->utilityAreaContent->findChildren<ResistorViewFrame *>()) delete item;
+}
+
+void CalculationScreen::redrawOnlyActiveResistorLists()
+{
+    clearAreas();
+    drawOnlyActiveBallastRessitorList();
+    drawOnlytActiveUtilityResistorList();
+}
+
+void CalculationScreen::drawOnlyActiveBallastRessitorList()
+{
+    QListIterator<Resistor *> iter(ballastResistorList);
+    for(int i = 1; iter.hasNext(); i++) {
+        auto *item = iter.next();
+        if (item->isActive()) drawBallastResistor(i, item);
+    }
+}
+
+void CalculationScreen::drawOnlytActiveUtilityResistorList()
+{
+    QListIterator<Resistor *> iter(utilityResistorList);
+    for(int i = 1; iter.hasNext(); i++) {
+        auto *item = iter.next();
+        if (item->isActive()) drawUtilityResistor(i, item);
+    }
+}
+
+void CalculationScreen::fillCentralWidget()
+{
+    fillUtilityLoadFrame();
+    fillDiffLoadFrame();
+    fillBallastLoadFrame();
+}
+
+void CalculationScreen::on_showActiveCheckBox_clicked()
+{
+    switch (ui->showActiveCheckBox->checkState()) {
+        case Qt::Checked:
+            redrawOnlyActiveResistorLists();
+            break;
+
+        case Qt::Unchecked:
+            redrawResistorLists();
+            break;
+    }
+}
+

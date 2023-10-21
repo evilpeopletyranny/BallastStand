@@ -15,22 +15,34 @@ private:
 
     static DataHandler *instance;
 
-    QList<Resistor*> activeResisterList;
+    QList<Resistor*> utilityResisterList;
     QList<Resistor*> ballastResisterList;
 
-    double activeSum = 0.0;
     double load = 0.0;
+
+    double utilitySum = 0.0;
     double ballastSum = 0.0;
+
+    double activeUtilitySum = 0.0;
+    double activeBallastSum = 0.0;
+
+    double activeUtilityPercentSum = 0.0;
+    double activeBallastPercentSum = 0.0;
 
     double percentage(double a, double b);
 
-    void calculateActiveSum(const QList<std::pair<double, bool>> &activeResistorValueList);
-    void calculateBallastSum(const QList<double> &ballastResisterValueList);
+    void calculateUtilitySum();
+    void calculateBallastSum();
 
-    void clearActiveResistorList();
-    void clearBallastResistorList();
+    void calculateActiveResistorSums();
+    void calculateActiveUtilitySum();
+    void calculateActiveBallastSum();
 
-    void sortActiveResistorList();
+    void calculateActiveResistorPercentSums();
+    void calcualteActiveUtilityPercentSum();
+    void calculateActiveBallastPercentSum();
+
+    void sortUtilityResistorList();
     void sortBallastResistorList();
 
     void calculateLoad();
@@ -38,27 +50,41 @@ private:
 public:
     static DataHandler *getInstance();
 
-    const QList<Resistor *> &getActiveResisterList() const;
-    void setActiveResisterList(const QList<std::pair<double, bool>> &newActiveResisterList);
-    void addActiveResistor(Resistor *resistor);
+    const QList<Resistor *> &getUtilityResisterList() const;
+    void setUtilityResisterList(const QList<std::pair<double, bool>> &newUtilityResisterList);
+    void addUtilityResistor(Resistor *resistor);
 
     const QList<Resistor *> &getBallastResisterList() const;
     void setBallastResisterList(const QList<double> &newBallastResisterList);
     void addBallastResistor(Resistor *resistor);
 
-    double getActiveSum() const;
+    double getUtiltiySum() const;
 
     double getBallastSum() const;
 
     double getLoad() const;
 
+    double getActiveUtilityPercentSum() const;
+
+    double getActiveBallastPercentSum() const;
+
+    double getActiveUtilitySum() const;
+
+    double getActiveBallastSum() const;
+
+    double getConsumptionDiff();
+    double getPercentDiff();
+
 public slots:
-    void receiveActiveResisterList(const QList<std::pair<double, bool>> &activeResistorValueList);
+    void receiveUtiltiyResisterList(const QList<std::pair<double, bool>> &utilityResistorValueList);
     void receiveBallastResisterList(const QList<double> &ballastResisterValueList);
+
+    void calculationAfterAlgorithm();
 
 signals:
     void ballastResistorListProcessed();
-    void activeResistorListProcessed();
+    void utilityResistorListProcessed();
+    void calculationsAfterAlgorithmProceed();
 };
 
 #endif // DATAHANDLER_H

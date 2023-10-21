@@ -1,21 +1,21 @@
-#ifndef ACTIVERESISTORINPUTFRAME_H
-#define ACTIVERESISTORINPUTFRAME_H
+#ifndef UTILITYRESISTORINPUTFRAME_H
+#define UTILITYRESISTORINPUTFRAME_H
 
 #include <QFrame>
 
 #include "resistor.h"
 
 namespace Ui {
-class ActiveResistorInputFrame;
+class UtilityResistorInputFrame;
 }
 
-class ActiveResistorInputFrame : public QFrame
+class UtilityResistorInputFrame : public QFrame
 {
     Q_OBJECT
 
 public:
-    explicit ActiveResistorInputFrame(QWidget *parent = nullptr);
-    ~ActiveResistorInputFrame();
+    explicit UtilityResistorInputFrame(QWidget *parent = nullptr);
+    ~UtilityResistorInputFrame();
 
     double getConsumptionValue();
     bool getStatus();
@@ -24,7 +24,7 @@ private slots:
     void on_statusCheckBox_clicked();
 
 private:
-    Ui::ActiveResistorInputFrame *ui;
+    Ui::UtilityResistorInputFrame *ui;
 
     void changeStatus();
 
@@ -37,4 +37,4 @@ private:
     void setDeactieLabel();
 };
 
-#endif // ACTIVERESISTORINPUTFRAME_H
+#endif // UTILITYRESISTORINPUTFRAME_H

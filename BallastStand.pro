@@ -9,7 +9,6 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    activeresistorinputframe.cpp \
     algorithmcore.cpp \
     ballastresistorinputframe.cpp \
     calculationscreen.cpp \
@@ -19,11 +18,10 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     resistor.cpp \
-    resistorframe.cpp \
-    resistorviewframe.cpp
+    resistorviewframe.cpp \
+    utilityresistorinputframe.cpp
 
 HEADERS += \
-    activeresistorinputframe.h \
     algorithmcore.h \
     ballastresistorinputframe.h \
     calculationscreen.h \
@@ -32,18 +30,17 @@ HEADERS += \
     datahandler.h \
     mainwindow.h \
     resistor.h \
-    resistorframe.h \
-    resistorviewframe.h
+    resistorviewframe.h \
+    utilityresistorinputframe.h
 
 FORMS += \
-    activeresistorinputframe.ui \
     ballastresistorinputframe.ui \
     calculationscreen.ui \
     calculationsettingscreen.ui \
     calculationstackedwidget.ui \
     mainwindow.ui \
-    resistorframe.ui \
-    resistorviewframe.ui
+    resistorviewframe.ui \
+    utilityresistorinputframe.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

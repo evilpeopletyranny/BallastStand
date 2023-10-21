@@ -35,16 +35,30 @@ private:
     void drawBallastResistor(int number, Resistor *resistor);
     void drawUtilityResistor(int number, Resistor *resistor);
 
+    void clearAreas();
+    void clearBallastArea();
+    void clearUtilityArea();
+
+    void redrawOnlyActiveResistorLists();
+    void drawOnlyActiveBallastRessitorList();
+    void drawOnlytActiveUtilityResistorList();
+
     void redrawResistorLists();
-    void redrawBallastResistorList();
-    void redrawUtilityResistorList();
+    void drawBallastResistorList();
+    void drawUtilityResistorList();
 
     void refreshResistorLists();
     void refreshBallastResistorList();
     void refreshUtilityResistorList();
 
+    void fillUtilityLoadFrame();
+    void fillDiffLoadFrame();
+    void fillBallastLoadFrame();
+
 private slots:
     void receiverAlgorithmCompleteSignal();
+    void fillCentralWidget();
+    void on_showActiveCheckBox_clicked();
 };
 
 #endif // CALCULATIONSCREEN_H

@@ -41,6 +41,8 @@ CalculationStackedWidget::~CalculationStackedWidget()
 
 void CalculationStackedWidget::on_acceptButton_clicked()
 {
+    qDebug() << "CalculationStackedWidget: нажатие кнопки применить.";
+
     goToViewPage();
     ui->settingPage->rebuildResistors();
 }

@@ -5,13 +5,19 @@ AlgorithmCore *AlgorithmCore::instance = nullptr;
 AlgorithmCore::AlgorithmCore(QObject *parent)
     : QObject{parent}
 {
-    dataHandler = DataHandler::getInstance();
+    initExternalEntities();
     initConnections();
+}
+
+void AlgorithmCore::initExternalEntities()
+{
+    dataHandler = DataHandler::getInstance();
 }
 
 void AlgorithmCore::initConnections()
 {
     connect(dataHandler, &DataHandler::ballastResistorListProcessed, this, &AlgorithmCore::startAlgorithm);
+    connect(this, &AlgorithmCore::algorithComplete, dataHandler, &DataHandler::calculationAfterAlgorithm);
 }
 
 AlgorithmCore *AlgorithmCore::getInstance()
