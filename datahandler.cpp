@@ -13,6 +13,11 @@ DataHandler::DataHandler(QObject *parent)
 
 }
 
+void DataHandler::setBallastResisterList(const QList<Resistor *> &newBallastResisterList)
+{
+    ballastResisterList = newBallastResisterList;
+}
+
 double DataHandler::getActiveBallastSum() const
 {
     return activeBallastSum;
@@ -58,14 +63,14 @@ double DataHandler::getUtiltiySum() const
     return utilitySum;
 }
 
-void DataHandler::setBallastResisterList(const QList<double> &newBallastResisterList)
+void DataHandler::setBallastResisterDataList(const QList<double> &newBallastResisterList)
 {
     QList<Resistor *> list;
     for (auto value: newBallastResisterList) list.append(new Resistor(value, percentage(value, utilitySum), false));
     ballastResisterList = list;
 }
 
-void DataHandler::setUtilityResisterList(const QList<std::pair<double, bool>> &newUtiityResisterList)
+void DataHandler::setUtilityResisterDataList(const QList<std::pair<double, bool>> &newUtiityResisterList)
 {
     QList<Resistor *> list;
     for (auto item: newUtiityResisterList) list.append(new Resistor(item.first, percentage(item.first, utilitySum), item.second));
@@ -178,7 +183,7 @@ void DataHandler::receiveBallastResisterList(const QList<double> &newBallastResi
 {
     qDebug() << "DataHandler: Кол-во резисторов балластной нагрузки:" << newBallastResisterList.size();
 
-    setBallastResisterList(newBallastResisterList);
+    setBallastResisterDataList(newBallastResisterList);
     calculateBallastSum();
     sortBallastResistorList();
 
@@ -203,7 +208,7 @@ void DataHandler::receiveUtiltiyResisterList(const QList<std::pair<double, bool>
 
     utilitySum = temp;
 
-    setUtilityResisterList(newUtiltiyResisterList);
+    setUtilityResisterDataList(newUtiltiyResisterList);
     calculateUtilitySum();
     sortUtilityResistorList();
     calculateLoad();

@@ -26,18 +26,36 @@ AlgorithmCore *AlgorithmCore::getInstance()
     return AlgorithmCore::instance;
 }
 
-void AlgorithmCore::greedyAlgorihtm(double load, QList<Resistor *> list)
+QList<Resistor *> AlgorithmCore::greedyAlgorihtm(double load, QList<Resistor *> list)
 {
-    if (list.isEmpty()) return;
+    QList<Resistor *> res;
+    if (list.isEmpty()) return res;
 
     double smallestConsumption = list.last()->getPower();
-
     for(auto item: list)
     {
         if (item->getPower() <= load || abs(load-item->getPower()) <= smallestConsumption/2.0)
         {
-            item->activate();
+            res.append(new Resistor(item->getPower(), item->getPercent(), true));
             load -= item->getPower();
+        }
+        else
+        {
+            res.append(new Resistor(item->getPower(), item->getPercent(), false));
+        }
+    }
+
+    return res;
+}
+
+void AlgorithmCore::table()
+{
+    for (int i = 1; i <= 100; ++i) {
+        qDebug() << i << "%";
+
+        for (auto *resistor: greedyAlgorihtm(i, dataHandler->getBallastResisterList()))
+        {
+            qDebug() << resistor->getPower() << resistor->isActive();
         }
     }
 }
@@ -47,8 +65,10 @@ void AlgorithmCore::startAlgorithm()
     auto list = dataHandler->getBallastResisterList();
     qDebug() << "AlgorithmCore: start greedyAlgorihtm. List size =" << list.size();
 
-    greedyAlgorihtm(dataHandler->getLoad(), list);
+    dataHandler->setBallastResisterList(greedyAlgorihtm(dataHandler->getLoad(), list));
 
     qDebug() << "AlgorithmCore: complete greedyAlgorihtm";
     emit algorithComplete();
+
+    table();
 }

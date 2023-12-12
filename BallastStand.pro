@@ -1,5 +1,4 @@
 QT       += core gui
-QT += serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,7 +19,9 @@ SOURCES += \
     mainwindow.cpp \
     resistor.cpp \
     resistorviewframe.cpp \
-    utilityresistorinputframe.cpp
+    tablewidget.cpp \
+    utilityresistorinputframe.cpp \
+    windowmanager.cpp
 
 HEADERS += \
     algorithmcore.h \
@@ -32,7 +33,9 @@ HEADERS += \
     mainwindow.h \
     resistor.h \
     resistorviewframe.h \
-    utilityresistorinputframe.h
+    tablewidget.h \
+    utilityresistorinputframe.h \
+    windowmanager.h
 
 FORMS += \
     ballastresistorinputframe.ui \

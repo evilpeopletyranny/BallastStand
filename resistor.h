@@ -1,7 +1,6 @@
 #ifndef RESISTOR_H
 #define RESISTOR_H
 
-
 class Resistor
 {
 private:
@@ -11,15 +10,11 @@ private:
 
 public:
     explicit Resistor(double consumption, double percent, bool active = false);
+    Resistor(const Resistor &otherResistor);
+
     double getPower() const;
-    void setPower(double newConsumption);
-    bool getActive() const;
-    void setActive(bool newActive);
-    bool isActive();
-
-    void activate();
-    void deactivate();
     double getPercent() const;
-};
 
+    bool isActive() const;
+};
 #endif // RESISTOR_H

@@ -21,7 +21,9 @@ private:
     void initExternalEntities();
     void initConnections();
 
-    void greedyAlgorihtm(double load, QList<Resistor *> list);
+    QList<Resistor *> greedyAlgorihtm(double load, QList<Resistor *> list);
+
+    void table();
 
 public:
     static AlgorithmCore *getInstance();

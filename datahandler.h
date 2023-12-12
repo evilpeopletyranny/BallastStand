@@ -51,11 +51,11 @@ public:
     static DataHandler *getInstance();
 
     const QList<Resistor *> &getUtilityResisterList() const;
-    void setUtilityResisterList(const QList<std::pair<double, bool>> &newUtilityResisterList);
+    void setUtilityResisterDataList(const QList<std::pair<double, bool>> &newUtilityResisterList);
     void addUtilityResistor(Resistor *resistor);
 
     const QList<Resistor *> &getBallastResisterList() const;
-    void setBallastResisterList(const QList<double> &newBallastResisterList);
+    void setBallastResisterDataList(const QList<double> &newBallastResisterList);
     void addBallastResistor(Resistor *resistor);
 
     double getUtiltiySum() const;
@@ -74,6 +74,8 @@ public:
 
     double getConsumptionDiff();
     double getPercentDiff();
+
+    void setBallastResisterList(const QList<Resistor *> &newBallastResisterList);
 
 public slots:
     void receiveUtiltiyResisterList(const QList<std::pair<double, bool>> &utilityResistorValueList);
