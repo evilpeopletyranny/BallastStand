@@ -30,14 +30,14 @@ void AlgorithmCore::greedyAlgorihtm(double load, QList<Resistor *> list)
 {
     if (list.isEmpty()) return;
 
-    double smallestConsumption = list.last()->getConsumption();
+    double smallestConsumption = list.last()->getPower();
 
     for(auto item: list)
     {
-        if (item->getConsumption() <= load || abs(load-item->getConsumption()) <= smallestConsumption/2.0)
+        if (item->getPower() <= load || abs(load-item->getPower()) <= smallestConsumption/2.0)
         {
             item->activate();
-            load -= item->getConsumption();
+            load -= item->getPower();
         }
     }
 }

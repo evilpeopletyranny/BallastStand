@@ -10,7 +10,7 @@ ResistorViewFrame::ResistorViewFrame(int number, Resistor *resistor, QWidget *pa
     QLocale ru(QLocale::Russian);
 
     ui->numberLabel->setText(QString::number(number));
-    ui->consumptionLabel->setText(QString::number(resistor->getConsumption(), 'f', 3));
+    ui->consumptionLabel->setText(QString::number(resistor->getPower(), 'f', 3));
     ui->percentLabel->setText(QString::number(resistor->getPercent(), 'f', 2));
     changeStatus(resistor->isActive());
 }

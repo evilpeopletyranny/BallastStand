@@ -63,8 +63,8 @@
         </size>
        </property>
        <property name="text">
-        <string>Номинальное
-сопротивление</string>
+        <string>Номинальная
+мощность</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -106,7 +106,7 @@
        <item>
         <widget class="QLabel" name="label_8">
          <property name="text">
-          <string>кОм</string>
+          <string>Вт</string>
          </property>
         </widget>
        </item>

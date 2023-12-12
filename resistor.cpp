@@ -1,13 +1,13 @@
 #include "resistor.h"
 
-double Resistor::getConsumption() const
+double Resistor::getPower() const
 {
-    return consumption;
+    return power;
 }
 
-void Resistor::setConsumption(double newConsumption)
+void Resistor::setPower(double newConsumption)
 {
-    consumption = newConsumption;
+    power = newConsumption;
 }
 
 bool Resistor::getActive() const
@@ -42,7 +42,7 @@ double Resistor::getPercent() const
 
 Resistor::Resistor(double consumption, double percent, bool active)
 {
-    this->consumption = consumption;
+    this->power = consumption;
     this->percent = percent;
     this->active = active;
 }

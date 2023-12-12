@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1112</width>
-    <height>339</height>
+    <width>1273</width>
+    <height>230</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,3,1">
+  <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <layout class="QVBoxLayout" name="utilityLayout">
      <property name="topMargin">
@@ -34,6 +34,24 @@
      </item>
      <item>
       <widget class="QScrollArea" name="utilityArea">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>310</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>310</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOn</enum>
        </property>
@@ -45,8 +63,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>175</width>
-          <height>294</height>
+          <width>294</width>
+          <height>185</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="utilityVLayout">
@@ -89,7 +107,8 @@
              <item>
               <widget class="QLabel" name="label_2">
                <property name="text">
-                <string>Максимальная нагрузка</string>
+                <string>Максимальная
+нагрузка</string>
                </property>
               </widget>
              </item>
@@ -103,7 +122,10 @@
              <item>
               <widget class="QLabel" name="label_10">
                <property name="text">
-                <string>kOm</string>
+                <string>Вт</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -114,7 +136,8 @@
              <item>
               <widget class="QLabel" name="label_11">
                <property name="text">
-                <string>Активная нагрузка</string>
+                <string>Активная
+нагрузка</string>
                </property>
               </widget>
              </item>
@@ -128,7 +151,10 @@
              <item>
               <widget class="QLabel" name="label_13">
                <property name="text">
-                <string>kOm</string>
+                <string>Вт</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -139,7 +165,8 @@
              <item>
               <widget class="QLabel" name="label_15">
                <property name="text">
-                <string>Процент активной нагрузки</string>
+                <string>Процент активной
+нагрузки</string>
                </property>
               </widget>
              </item>
@@ -184,7 +211,10 @@
              <item>
               <widget class="QLabel" name="label_8">
                <property name="text">
-                <string>kOm</string>
+                <string>Вт</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
                </property>
               </widget>
              </item>
@@ -226,7 +256,8 @@
              <item>
               <widget class="QLabel" name="label_14">
                <property name="text">
-                <string>Максимальная нагрузка</string>
+                <string>Максимальная
+нагрузка</string>
                </property>
               </widget>
              </item>
@@ -240,7 +271,10 @@
              <item>
               <widget class="QLabel" name="label_18">
                <property name="text">
-                <string>kOm</string>
+                <string>Вт</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -251,7 +285,8 @@
              <item>
               <widget class="QLabel" name="label_20">
                <property name="text">
-                <string>Активная нагрузка</string>
+                <string>Активная
+нагрузка</string>
                </property>
               </widget>
              </item>
@@ -265,7 +300,10 @@
              <item>
               <widget class="QLabel" name="label_21">
                <property name="text">
-                <string>kOm</string>
+                <string>Вт</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -276,7 +314,8 @@
              <item>
               <widget class="QLabel" name="label_22">
                <property name="text">
-                <string>Процент активной нагрузки</string>
+                <string>Процент активной
+нагрузки</string>
                </property>
               </widget>
              </item>
@@ -361,6 +400,24 @@
      </item>
      <item>
       <widget class="QScrollArea" name="ballastArea">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>340</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>340</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOn</enum>
        </property>
@@ -372,8 +429,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>190</width>
-          <height>294</height>
+          <width>324</width>
+          <height>185</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="ballastVLayout">

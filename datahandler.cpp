@@ -2,7 +2,7 @@
 
 bool compareResistors(const Resistor *res1, const Resistor *res2)
 {
-    return (res1->getConsumption() < res2->getConsumption());
+    return (res1->getPower() < res2->getPower());
 }
 
 DataHandler *DataHandler::instance = nullptr;
@@ -80,14 +80,14 @@ double DataHandler::percentage(double a, double b)
 void DataHandler::calculateUtilitySum()
 {
     double temp = 0.0;
-    for(auto item: utilityResisterList) temp += item->getConsumption();
+    for(auto item: utilityResisterList) temp += item->getPower();
     utilitySum = temp;
 }
 
 void DataHandler::calculateBallastSum()
 {
     double temp = 0.0;
-    for(auto item: ballastResisterList) temp += item->getConsumption();
+    for(auto item: ballastResisterList) temp += item->getPower();
     ballastSum = temp;
 }
 
@@ -104,7 +104,7 @@ void DataHandler::calculateActiveUtilitySum()
     double temp = 0.0;
     for (auto item: utilityResisterList)
     {
-        if (item->isActive()) temp += item->getConsumption();
+        if (item->isActive()) temp += item->getPower();
     }
     activeUtilitySum = temp;
 
@@ -116,7 +116,7 @@ void DataHandler::calculateActiveBallastSum()
     double temp = 0.0;
     for (auto item: ballastResisterList)
     {
-        if (item->isActive()) temp += item->getConsumption();
+        if (item->isActive()) temp += item->getPower();
     }
     activeBallastSum = temp;
 
@@ -169,7 +169,7 @@ void DataHandler::calculateLoad()
     load = 0.0;
     for (auto *item: utilityResisterList)
     {
-        if (item->isActive()) load += item->getConsumption();
+        if (item->isActive()) load += item->getPower();
     }
     qDebug() << "DataHandler: включенная активная нагрузка =" << load << "kOm";
 }
