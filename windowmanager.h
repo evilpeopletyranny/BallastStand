@@ -25,7 +25,6 @@ public:
 
     void showTableWidget(QWidget *parent);
 
-
 signals:
 
 };
