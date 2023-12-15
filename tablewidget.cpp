@@ -64,11 +64,12 @@ void TableWidget::calculateTable()
 {
     qDebug() << "TableWidget: Расчет таблицы";
     auto list = dataHandler->getBallastResisterList();
+
     QList<Resistor *> a;
     for (auto item: list) a.append(new Resistor(item->getPower(), item->getPercent(), false));
 
     QList<QList<Resistor *>> res;
-    for (int i = 1; i <= 100; i++)
+    for (int i = 0; i <= 100; i++)
     {
         res.append(algoritmCore->greedyAlgorihtm(100.0 - i, a));
     }
@@ -81,7 +82,7 @@ void TableWidget::drowDataRow(int rowNumber, QList<Resistor *> list)
     double load = 0.0;
 
     for(int columnNumber = 0; columnNumber < list.size(); columnNumber++) {
-        drawCell(rowNumber, 0, QString::number(rowNumber+1));
+        drawCell(rowNumber, 0, QString::number(rowNumber));
 
         if (list.at(columnNumber)->isActive()) {
             load += list.at(columnNumber)->getPercent();
@@ -90,7 +91,7 @@ void TableWidget::drowDataRow(int rowNumber, QList<Resistor *> list)
         else drawCell(rowNumber, columnNumber+1, "-");
     }
 
-    drawCell(rowNumber, columnCount - 1, QString::number(100 - (load + rowNumber)));
+    drawCell(rowNumber, columnCount - 1, QString::number(100.0 - (load + (double)rowNumber)));
 }
 
 void TableWidget::drawCell(int row, int column, QString text)

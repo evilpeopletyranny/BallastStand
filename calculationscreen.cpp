@@ -85,7 +85,8 @@ void CalculationScreen::drawBallastResistorList()
 
 void CalculationScreen::drawBallastResistor(int number, Resistor *resistor)
 {
-    ui->ballastVLayout->insertWidget(0, new ResistorViewFrame(number, resistor, this));
+    auto layout = ui->ballastVLayout;
+    layout->insertWidget(layout->count()-1, new ResistorViewFrame(number, resistor, this));
 }
 
 void CalculationScreen::drawUtilityResistorList()
@@ -96,7 +97,8 @@ void CalculationScreen::drawUtilityResistorList()
 
 void CalculationScreen::drawUtilityResistor(int number, Resistor *resistor)
 {
-    ui->utilityVLayout->insertWidget(0, new ResistorViewFrame(number, resistor, this));
+    auto layout = ui->utilityVLayout;
+    layout->insertWidget(layout->count()-1, new ResistorViewFrame(number, resistor, this));
 }
 
 void CalculationScreen::clearAreas()
