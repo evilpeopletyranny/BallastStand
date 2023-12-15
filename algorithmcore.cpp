@@ -31,10 +31,11 @@ QList<Resistor *> AlgorithmCore::greedyAlgorihtm(double load, QList<Resistor *> 
     QList<Resistor *> res;
     if (list.isEmpty()) return res;
 
-    double smallestConsumption = list.first()->getPower();
+    double smallestConsumption = list.last()->getPower() / 2.0;
+    qDebug() << "AlgorithmCore::greedyAlgorihtm шаг =" << smallestConsumption;
     for(auto item: list)
     {
-        if (item->getPower() <= load || abs(load-item->getPower()) <= smallestConsumption/2.0)
+        if (item->getPower() <= load || abs(load-item->getPower()) <= smallestConsumption)
         {
             res.append(new Resistor(item->getPower(), item->getPercent(), true));
             load -= item->getPower();

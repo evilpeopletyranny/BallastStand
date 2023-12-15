@@ -2,7 +2,7 @@
 
 bool compareResistors(const Resistor *res1, const Resistor *res2)
 {
-    return (res1->getPower() < res2->getPower());
+    return (res1->getPower() > res2->getPower());
 }
 
 DataHandler *DataHandler::instance = nullptr;
