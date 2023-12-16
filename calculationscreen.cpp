@@ -7,6 +7,8 @@ CalculationScreen::CalculationScreen(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    windowManager = WindowManager::getInstance();
+
     initExternalEntities();
     initConnections();
 }
@@ -160,5 +162,10 @@ void CalculationScreen::on_showActiveCheckBox_clicked()
             redrawResistorLists();
             break;
     }
+}
+
+void CalculationScreen::on_tableButton_clicked()
+{
+    windowManager->showTableWidget(this);
 }
 

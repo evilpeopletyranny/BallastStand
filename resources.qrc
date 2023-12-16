@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>img/pish</file>
+        <file>img/icons_Value_mini.png</file>
+        <file>img/value</file>
+        <file>img/delete.png</file>
     </qresource>
 </RCC>

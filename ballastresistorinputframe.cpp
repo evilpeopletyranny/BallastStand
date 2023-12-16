@@ -17,3 +17,8 @@ double BallastResistorInputFrame::getConsumptionValue()
 {
     return ui->consumptionSpinBox->value();
 }
+
+void BallastResistorInputFrame::on_deleteButton_clicked()
+{
+    delete this;
+}

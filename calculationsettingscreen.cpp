@@ -19,13 +19,15 @@ CalculationSettingScreen::~CalculationSettingScreen()
 
 void CalculationSettingScreen::on_utilityAddButton_clicked()
 {
-    ui->utilityVLayout->insertWidget(0, new UtilityResistorInputFrame());
+    auto *layout = ui->utilityVLayout;
+    layout->insertWidget(layout->count() - 1, new UtilityResistorInputFrame());
 }
 
 
 void CalculationSettingScreen::on_ballastAddButton_clicked()
 {
-    ui->ballastVLayout->insertWidget(0, new BallastResistorInputFrame());
+    auto *layout = ui->ballastVLayout;
+    layout->insertWidget(layout->count() - 1, new BallastResistorInputFrame());
 }
 
 void CalculationSettingScreen::rebuildResistors()

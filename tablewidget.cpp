@@ -5,6 +5,8 @@ void TableWidget::initUI()
     setMinimumSize(500, 500);
     setMaximumSize(1000, 500);
 
+    setWindowTitle("Таблица расчетов");
+
     setShowGrid(true);
     verticalHeader()->setVisible(false);
 }

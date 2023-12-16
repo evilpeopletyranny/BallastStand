@@ -77,3 +77,9 @@ bool UtilityResistorInputFrame::getStatus()
 {
     return ui->statusCheckBox->checkState() == Qt::Checked;
 }
+
+void UtilityResistorInputFrame::on_deletrButton_clicked()
+{
+    delete this;
+}
+

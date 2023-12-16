@@ -23,6 +23,8 @@ public:
 private slots:
     void on_statusCheckBox_clicked();
 
+    void on_deletrButton_clicked();
+
 private:
     Ui::UtilityResistorInputFrame *ui;
 

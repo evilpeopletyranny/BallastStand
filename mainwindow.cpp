@@ -6,17 +6,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    windowManager = WindowManager::getInstance();
+
+    setWindowTitle("Расчет нагрузок");
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-
-void MainWindow::on_actionTable_triggered()
-{
-    windowManager->showTableWidget(this);
-}
-

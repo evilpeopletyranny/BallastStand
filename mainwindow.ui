@@ -40,13 +40,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionTable"/>
   </widget>
-  <action name="actionTable">
-   <property name="text">
-    <string>Расчет</string>
-   </property>
-  </action>
  </widget>
  <customwidgets>
   <customwidget>

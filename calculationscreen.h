@@ -7,6 +7,7 @@
 #include "resistorviewframe.h"
 #include "algorithmcore.h"
 #include "datahandler.h"
+#include "windowmanager.h"
 
 namespace Ui {
 class CalculationScreen;
@@ -22,6 +23,8 @@ public:
 
 private:
     Ui::CalculationScreen *ui;
+
+    WindowManager *windowManager;
 
     DataHandler *dataHandler;
     AlgorithmCore *algorithmCore;
@@ -59,6 +62,7 @@ private slots:
     void receiverAlgorithmCompleteSignal();
     void fillCentralWidget();
     void on_showActiveCheckBox_clicked();
+    void on_tableButton_clicked();
 };
 
 #endif // CALCULATIONSCREEN_H

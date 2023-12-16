@@ -19,6 +19,9 @@ public:
 
     double getConsumptionValue();
 
+private slots:
+    void on_deleteButton_clicked();
+
 private:
     Ui::BallastResistorInputFrame *ui;
 };

@@ -25,12 +25,12 @@ double DataHandler::getActiveBallastSum() const
 
 double DataHandler::getConsumptionDiff()
 {
-    return activeUtilitySum - activeBallastSum;
+    return utilitySum - activeBallastSum;
 }
 
 double DataHandler::getPercentDiff()
 {
-    return activeUtilityPercentSum - activeBallastPercentSum;
+    return 100.0 - (activeUtilityPercentSum + activeBallastPercentSum);
 }
 
 double DataHandler::getActiveUtilitySum() const
