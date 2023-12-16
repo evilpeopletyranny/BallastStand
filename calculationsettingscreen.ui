@@ -43,7 +43,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>350</width>
            <height>30</height>
           </size>
          </property>
@@ -73,6 +73,12 @@ color: rgb(255, 255, 255);</string>
        </item>
        <item>
         <widget class="QScrollArea" name="utilityArea">
+         <property name="maximumSize">
+          <size>
+           <width>350</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="verticalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOn</enum>
          </property>
@@ -127,7 +133,7 @@ color: rgb(255, 255, 255);</string>
        </property>
        <property name="maximumSize">
         <size>
-         <width>16777215</width>
+         <width>350</width>
          <height>30</height>
         </size>
        </property>
@@ -404,7 +410,7 @@ border-top:none;</string>
          </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>350</width>
            <height>30</height>
           </size>
          </property>
@@ -434,6 +440,12 @@ color: rgb(255, 255, 255);</string>
        </item>
        <item>
         <widget class="QScrollArea" name="ballastArea">
+         <property name="maximumSize">
+          <size>
+           <width>350</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="verticalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOn</enum>
          </property>
@@ -479,6 +491,12 @@ color: rgb(255, 255, 255);</string>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>16777215</height>
+        </size>
        </property>
        <property name="font">
         <font>
