@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1728</width>
-    <height>314</height>
+    <width>861</width>
+    <height>368</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,7 +30,7 @@
        <item>
         <widget class="QLabel" name="label_6">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -73,24 +73,6 @@ color: rgb(255, 255, 255);</string>
        </item>
        <item>
         <widget class="QScrollArea" name="utilityArea">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>340</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>340</width>
-           <height>16777215</height>
-          </size>
-         </property>
          <property name="verticalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOn</enum>
          </property>
@@ -102,8 +84,8 @@ color: rgb(255, 255, 255);</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>324</width>
-            <height>224</height>
+            <width>165</width>
+            <height>278</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="utilityVLayout">
@@ -111,6 +93,9 @@ color: rgb(255, 255, 255);</string>
             <spacer name="verticalSpacer_3">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -129,7 +114,7 @@ color: rgb(255, 255, 255);</string>
      <item>
       <widget class="QPushButton" name="utilityAddButton">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -246,19 +231,6 @@ border-top:none;</string>
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
         </item>
         <item>
@@ -341,19 +313,6 @@ border-top:none;</string>
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
         </item>
         <item>
@@ -375,9 +334,10 @@ border-top:none;</string>
              <string notr="true">border: none;</string>
             </property>
             <property name="text">
-             <string>Система стремится приблизить реальную нагрузку к выдаваемой за счет включенных секций полезной и балластной нагрузок.
-Секции полезной нагрузки включаются оператором.
-Секции балластной нагрузки включаются системой. </string>
+             <string>Система стремится приблизить реальную нагрузку к выдаваемой за счет включенных секций полезной и балластной нагрузок.Секции полезной нагрузки включаются оператором.Секции балластной нагрузки включаются системой. </string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -431,7 +391,7 @@ border-top:none;</string>
        <item>
         <widget class="QLabel" name="label_7">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -474,24 +434,6 @@ color: rgb(255, 255, 255);</string>
        </item>
        <item>
         <widget class="QScrollArea" name="ballastArea">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>340</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>340</width>
-           <height>16777215</height>
-          </size>
-         </property>
          <property name="verticalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOn</enum>
          </property>
@@ -503,8 +445,8 @@ color: rgb(255, 255, 255);</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>324</width>
-            <height>224</height>
+            <width>186</width>
+            <height>278</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="ballastVLayout">
@@ -512,6 +454,9 @@ color: rgb(255, 255, 255);</string>
             <spacer name="verticalSpacer_4">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -530,7 +475,7 @@ color: rgb(255, 255, 255);</string>
      <item>
       <widget class="QPushButton" name="ballastAddButton">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
