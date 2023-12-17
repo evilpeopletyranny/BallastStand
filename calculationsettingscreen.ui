@@ -427,7 +427,7 @@ border-top:none;</string>
 border-bottom: none;
 border-top-left-radius: 5px;
 border-top-right-radius: 5px;
-background-color: rgb(0, 172, 138);
+background-color: rgb(246, 97, 81);
 color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
