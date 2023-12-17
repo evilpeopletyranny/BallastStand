@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,10 +17,12 @@ SOURCES += \
     calculationsettingscreen.cpp \
     calculationstackedwidget.cpp \
     datahandler.cpp \
+    logger.cpp \
     main.cpp \
     mainwindow.cpp \
     resistor.cpp \
     resistorviewframe.cpp \
+    serialconnector.cpp \
     tablewidget.cpp \
     utilityresistorinputframe.cpp \
     windowmanager.cpp
@@ -31,10 +33,13 @@ HEADERS += \
     calculationscreen.h \
     calculationsettingscreen.h \
     calculationstackedwidget.h \
+    data_payload.h \
     datahandler.h \
+    logger.h \
     mainwindow.h \
     resistor.h \
     resistorviewframe.h \
+    serialconnector.h \
     tablewidget.h \
     utilityresistorinputframe.h \
     windowmanager.h
